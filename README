@@ -1,0 +1,22 @@
+This R project contains scripts used for the paper "Nonparametric Quantile Causal Discovery".
+The content of the main directory is:
+
+qccd_code2018/
+|-R/ (all of our R code lives here)
+|---run_benchmarks/ (scripts for running qccd across different benchmarks)
+|-data/
+|---ANM_pairs/
+|-----ANM-Gauss/
+|-----ANM-pnl/
+|-----ANM-s/
+|-----ANM-t/
+|---SIM_pairs/ (Mooij 2016)
+|-----SIM/
+|-----SIM-G/
+|-----SIM-c/
+|-----SIM-ln/
+|---tuebingen_benchmark/ (Mooij 2016)
+
+
+The file ~R/cd_methods.R contains the wrapper around our causal discovery method
+See R/run_benchmarks for examples.
