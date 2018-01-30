@@ -1,5 +1,8 @@
-This R project contains scripts used for the paper "Nonparametric Quantile Causal Discovery".
-The content of the main directory is:
+This repository is for the supplementary R project of the paper:
+N. Tagasovska, T. Vatter, V. Chavez-Demoulin, "Nonparametric Quantile Causal Discovery”, 2018.
+
+CONTENTS
+———————————————————
 
 qccd_code2018/
 |-R/ (all of our R code lives here)
@@ -20,5 +23,25 @@ qccd_code2018/
 |---tuebingen_benchmark/ (Mooij 2016)
 
 
-The file ~R/cd_methods.R contains a wrapper around our causal discovery method
+The file ~R/cd_methods.R contains a wrapper around our causal discovery method.
+
+
+
+PACKAGES REQUIRED
+———————————————————
+install.packages(“Hmisc”)
+install.packages(“rvinecopulib”)
+install.packages(“statmod”)
+
+
+EXAMPLES
+———————————————————
 See R/run_benchmarks for examples.
+
+COPYING
+———————————————————
+See COPYING for license terms.
+
+
+
+
