@@ -1,4 +1,4 @@
-This repository is for the supplementary R project of the paper:
+This repository is part of the supplementary material for the paper:
 N. Tagasovska, T. Vatter, V. Chavez-Demoulin, "Nonparametric Quantile Causal Discovery”, 2018.
 
 CONTENTS
@@ -8,7 +8,7 @@ qccd_code2018/
 |-R/ (all of our R code lives here)
 |---run_benchmarks/ (scripts for running qccd across different benchmarks)
 |-data/
-|—ANHNMN/
+|—ANHNMN/ (simulated and real data pairs)
 |-----AN-Gauss/
 |-----AN-s/
 |-----HN/
@@ -25,6 +25,9 @@ qccd_code2018/
 
 The file ~R/cd_methods.R contains a wrapper around our causal discovery method.
 
+EXAMPLES
+———————————————————
+See R/run_benchmarks for examples.
 
 
 PACKAGES REQUIRED
@@ -33,10 +36,6 @@ install.packages(“Hmisc”)
 install.packages(“rvinecopulib”)
 install.packages(“statmod”)
 
-
-EXAMPLES
-———————————————————
-See R/run_benchmarks for examples.
 
 COPYING
 ———————————————————
