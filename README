@@ -5,11 +5,13 @@ qccd_code2018/
 |-R/ (all of our R code lives here)
 |---run_benchmarks/ (scripts for running qccd across different benchmarks)
 |-data/
-|---ANM_pairs/
-|-----ANM-Gauss/
-|-----ANM-pnl/
-|-----ANM-s/
-|-----ANM-t/
+|—ANHNMN/
+|-----AN-Gauss/
+|-----AN-s/
+|-----HN/
+|-----HN-s/
+|-----MN/
+|-----MN-s/
 |---SIM_pairs/ (Mooij 2016)
 |-----SIM/
 |-----SIM-G/

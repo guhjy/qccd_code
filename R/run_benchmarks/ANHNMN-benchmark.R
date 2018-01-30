@@ -10,8 +10,8 @@ n_size = 1000
 
 set.seed(3)
 
-path = "../data/ANM_pairs/"
-ext = "HS/"
+path = "../data/ANHNMN_pairs/"
+ext = "HN/"
 
 # load ground truth for pairs
 pairs_gt <- read_csv(paste0(path, ext, "pairs_gt.txt"), col_names = FALSE)
@@ -32,8 +32,6 @@ runANM = function(method){
   eps = rep(0, n_pairs)
   Correct = rep(0, n_pairs)
 
-  t_start = Sys.time()
-
       n_corr = 0
       results = matrix(0,nrow = n_pairs, ncol = 2)
       
@@ -47,7 +45,6 @@ runANM = function(method){
         plot(pair)
         rm(res)
         res = method_to_run(pair)
-        #print(res)
         t2 = Sys.time()
         elapsed = as.numeric(difftime(t2, t1), units = "secs")
         pair_idx[i] = i
@@ -66,16 +63,9 @@ runANM = function(method){
           n_corr = n_corr + correct
         }
       }
-      
-      t_end = Sys.time()
       ncorrect = sum(results[,1]  == pairs_gt )
-      
       print(paste("correct =", n_corr, "mean =", ncorrect))
 
-      elapsed_total = as.numeric(difftime(t_end, t_start), units = "secs")
-      print("------")
-      print(elapsed_total)
-      print("------")
       corr = rep(0, n_pairs)
       corr[pairs_gt == cds] = 1
       resDF = data.frame(Correct = corr, Eps = eps, Cds = cds,T = time)
