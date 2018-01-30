@@ -30,7 +30,7 @@ runSIM <- function(method){
   results = matrix(0,nrow = n_pairs, ncol = 2)
   
   method_to_run = switch(method,
-                         "QCCD" = QCCDWrapper)  
+                         "QCCD" = QCCD)  
   
   for (i in 1:100)
   {

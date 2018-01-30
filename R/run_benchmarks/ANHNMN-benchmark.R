@@ -23,7 +23,7 @@ sensitivity_size = 0
 runANM = function(method){
   
   method_to_run = switch(method,
-                        "QCCD" = QCCDWrapper)  
+                        "QCCD" = QCCD)  
 
   pair_idx = rep("", n_pairs)
   eps = rep(0, n_pairs)

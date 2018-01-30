@@ -1,39 +1,5 @@
 rm(list = ls())
-library(rvinecopulib)
-library(Hmisc)
-library(statmod)
-library(acepack)
-source("./cd_methods.R")
-
-
-
-
-# ode for reading in data pairs is borrowed from 
-# Marx, A. and Vreeken, J. Telling Cause from Effect using MDL-based Local and Global Regression.
-# In ICDM, 2017
-uv = c(1:51,56:70,72:104,106)
-ref = read.table("../data/tuebingen_benchmark/README_polished.tab", sep="\t", header=F, stringsAsFactors = F)
-meta = read.table("../data/tuebingen_benchmark/pairmeta.txt")
-ref.uv = ref[uv, ]
-
-readI = function(i, r=ref){
-  f = paste(c("../data/tuebingen_benchmark/", r$V1[i], ".txt"), collapse="")
-  t = read.table(f, sep=" ", header=F, stringsAsFactors = F)
-  return(t)
-}
-
-
-QCCDwrap_tu <- function(X, Y){
-  res = QCCDWrapper(cbind(X,Y))
-  if(!is.na(res$cd)) {
-  cd = ifelse(res$cd == 1, "->", "<-")
-  } else{
-    cd = "--"
-  }
-  list(cd = cd, eps = res$eps)
-}
-
-
+source("./cd_utils.R")
 
   cnt = 0
   pair = rep("", length(uv))
@@ -44,7 +10,7 @@ QCCDwrap_tu <- function(X, Y){
   for(i in 1:length(uv)){
   t1 = Sys.time()
   t = readI(uv[i])[,1:2]
-  res = QCCDwrap_tu(t[,1], t[,2])
+  res = QCCDwrap(t[,1], t[,2])
   t2 = Sys.time()
   elapsed = as.numeric(difftime(t2,t1), units="secs")
   pair[i] = uv[i]
@@ -54,11 +20,10 @@ QCCDwrap_tu <- function(X, Y){
   }
 corr = rep(0,length(uv))
 corr[ref.uv$V6 == cds] = 1
+
+print("Correct causal directions recovered:")
 print(sum(corr))
-print(sum(cds == "--"))
 
 resCopula = data.frame(Correct = corr, Eps = eps, Cds = cds, T = time)
 write.table(resCopula, file = "../results/QCCD_Tueb.tab", row.names = F, quote = F, sep="\t")
-
-print ("done vinecopula")
 

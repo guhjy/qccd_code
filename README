@@ -1,5 +1,5 @@
 This repository is part of the supplementary material for the paper:
-N. Tagasovska, T. Vatter, V. Chavez-Demoulin, "Nonparametric Quantile-based Causal Discovery”, 2018.
+N. Tagasovska, T. Vatter, V. Chavez-Demoulin, "Nonparametric Quantile Causal Discovery”, 2018.
 
 CONTENTS
 ———————————————————
@@ -8,7 +8,7 @@ qccd_code2018/
 |-R/ (all of our R code lives here)
 |---run_benchmarks/ (scripts for running qccd across different benchmarks)
 |-data/
-|---ANHNMN_pairs/ (simulated and real data pairs)
+|—ANHNMN/ (simulated and real data pairs)
 |-----AN-Gauss/
 |-----AN-s/
 |-----HN/
@@ -35,8 +35,11 @@ PACKAGES REQUIRED
 install.packages(“Hmisc”)
 install.packages(“rvinecopulib”)
 install.packages(“statmod”)
-
-
+install.packages(“tnagler”)
+install.packages(“igraph”)
+install.packages(“pcalg”)
+install.packages(“ggraph”)
+install.packages(“naglr”)
 COPYING
 ———————————————————
 See COPYING for license terms.

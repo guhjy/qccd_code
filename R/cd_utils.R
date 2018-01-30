@@ -14,8 +14,7 @@ quantileScoring <- function(actual, pred, prob = 0.95) {
 }
 
 
-
-QCCDWrapper<- function(pair){
+QCCD <- function(pair){
   # changing the seed might slightly affect the results due to the random jittering
   # in the rank function
   set.seed(0)
@@ -54,3 +53,30 @@ QCCDWrapper<- function(pair){
   return(list(cd = cd, epsilon = r1))
   
 }
+
+
+QCCDwrap <- function(X, Y){
+  res = QCCD(cbind(X,Y))
+  if(!is.na(res$cd)) {
+    cd = ifelse(res$cd == 1, "->", "<-")
+  } else{
+    cd = "--"
+  }
+  list(cd = cd, eps = res$eps)
+}
+
+
+# code for reading in data pairs is borrowed from 
+# Marx, A. and Vreeken, J. Telling Cause from Effect using MDL-based Local and Global Regression.
+# In ICDM, 2017
+uv = c(1:51,56:70,72:104,106)
+ref = read.table("../data/tuebingen_benchmark/README_polished.tab", sep="\t", header=F, stringsAsFactors = F)
+meta = read.table("../data/tuebingen_benchmark/pairmeta.txt")
+ref.uv = ref[uv, ]
+
+readI = function(i, r=ref){
+  f = paste(c("../data/tuebingen_benchmark/", r$V1[i], ".txt"), collapse="")
+  t = read.table(f, sep=" ", header=F, stringsAsFactors = F)
+  return(t)
+}
+
