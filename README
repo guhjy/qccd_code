@@ -20,5 +20,5 @@ qccd_code2018/
 |---tuebingen_benchmark/ (Mooij 2016)
 
 
-The file ~R/cd_methods.R contains the wrapper around our causal discovery method
+The file ~R/cd_methods.R contains a wrapper around our causal discovery method
 See R/run_benchmarks for examples.
