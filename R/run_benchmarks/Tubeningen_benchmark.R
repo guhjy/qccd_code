@@ -36,10 +36,10 @@ QCCDwrap_tu <- function(X, Y){
 
 
   cnt = 0
-  pair = rep("", length(uvnd))
-  eps = rep(0, length(uvnd))
-  cds = rep("--", length(uvnd))
-  time = rep(0, length(uvnd))
+  pair = rep("", length(uv))
+  eps = rep(0, length(uv))
+  cds = rep("--", length(uv))
+  time = rep(0, length(uv))
 
   for(i in 1:length(uv)){
   t1 = Sys.time()

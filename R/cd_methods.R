@@ -16,6 +16,8 @@ quantileScoring <- function(actual, pred, prob = 0.95) {
 
 
 QCCDWrapper<- function(pair){
+  # changing the seed might slightly affect the results due to the random jittering
+  # in the rank function
   set.seed(0)
   n <- length(pair[,1])
   X = pair[,1]
