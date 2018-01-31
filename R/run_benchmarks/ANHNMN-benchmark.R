@@ -3,7 +3,7 @@ rm(list = ls())
 
 library(dplyr)
 library(readr)
-source("./cd_methods.R")
+source("./cd_utils.R")
 
 n_pairs = 100
 n_size = 1000
