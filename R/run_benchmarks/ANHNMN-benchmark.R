@@ -1,4 +1,3 @@
-# ANM benchmark
 rm(list = ls())
 
 library(dplyr)
@@ -17,7 +16,6 @@ ext = "HN/"
 pairs_gt <- read_csv(paste0(path, ext, "pairs_gt.txt"), col_names = FALSE)
 pairs_gt = pairs_gt$X1
 
-sensitivity_size = 0
 
 
 runANM = function(method){

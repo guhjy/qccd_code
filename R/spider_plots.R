@@ -10,11 +10,8 @@ colnames(cc_acc_df) = c("SIM", "SIM \n -ln", "SIM \n -G", "AN \n -G", "AN \n -s"
 cc_acc_df = rbind(rep(1,10) , rep(0,10) , cc_acc_df) 
 
 radarchart( cc_acc_df  , axistype=1 , 
-            #custom polygon
-            pcol=rgb(0.529412, 0.807843, 0.980392,0.7) , pfcol=rgb(0.678431, 0.847059, 0.901961,0.7)  , plwd=4 , 
-            #custom the grid
+            pcol=rgb(0.529412, 0.807843, 0.980392,0.7) , pfcol=rgb(0.678431, 0.847059, 0.901961,0.7), plwd=4, 
             cglcol="grey", cglty=1, axislabcol="grey", caxislabels=seq(0,1,5), cglwd=0.8,
-            #custom labels
             vlcex=1.5 , title = "QCCD")
 
 # CAM
@@ -23,8 +20,7 @@ colnames(cam_acc_df) =  c("SIM", "SIM \n -ln", "SIM \n -G", "AN \n -G", "AN \n -
 cam_acc_df = rbind(rep(1,10) , rep(0,10) , cam_acc_df) 
 
 radarchart( cam_acc_df  , axistype=1 , 
-            #custom polygon
-            pcol=rgb(0.529412, 0.807843, 0.980392,0.7) , pfcol=rgb(0.678431, 0.847059, 0.901961,0.7) , plwd=4 ,
+            pcol=rgb(0.529412, 0.807843, 0.980392,0.7) , pfcol=rgb(0.678431, 0.847059, 0.901961,0.7), plwd=4,
             cglcol="grey", cglty=1, axislabcol="grey", caxislabels=seq(0,1,5), cglwd=0.8,vlcex=1.5
             ,title = "biCAM")
 
@@ -35,8 +31,7 @@ colnames(igci_acc_df) = c("SIM", "SIM \n -ln", "SIM \n -G", "AN \n -G", "AN \n -
 igci_acc_df = rbind(rep(1,10) , rep(0,10) , igci_acc_df) 
 
 radarchart( igci_acc_df  , axistype=1 , 
-            #custom polygon
-            pcol=rgb(0.529412, 0.807843, 0.980392,0.7) , pfcol=rgb(0.678431, 0.847059, 0.901961,0.7) , plwd=4 ,
+            pcol=rgb(0.529412, 0.807843, 0.980392,0.7) , pfcol=rgb(0.678431, 0.847059, 0.901961,0.7), plwd=4,
             cglcol="grey", cglty=1, axislabcol="grey", caxislabels=seq(0,1,5), cglwd=0.8,vlcex=1.5
             ,title = "IGCI")
 
@@ -46,8 +41,7 @@ colnames(slope_acc_df)= c("SIM", "SIM \n -ln", "SIM \n -G", "AN \n -G", "AN \n -
 slope_acc_df = rbind(rep(1,10) , rep(0,10) , slope_acc_df) 
 
 radarchart( slope_acc_df  , axistype=1 , 
-            #custom polygon
-            pcol=rgb(0.529412, 0.807843, 0.980392,0.7) , pfcol=rgb(0.678431, 0.847059, 0.901961,0.7)  , plwd=4 ,
+            pcol=rgb(0.529412, 0.807843, 0.980392,0.7) , pfcol=rgb(0.678431, 0.847059, 0.901961,0.7), plwd=4,
             cglcol="grey", cglty=1, axislabcol="grey", caxislabels=seq(0,1,5), cglwd=0.8,vlcex=1.5
             ,title = "Slope")
 
@@ -58,8 +52,7 @@ resit_acc_df = rbind(rep(1,10) , rep(0,10) , resit_acc_df)
 
 # RESIT
 radarchart(resit_acc_df  , axistype=1 , 
-           #custom polygon
-           pcol=rgb(0.529412, 0.807843, 0.980392,0.7) , pfcol=rgb(0.678431, 0.847059, 0.901961,0.7)  , plwd=4 ,
+           pcol=rgb(0.529412, 0.807843, 0.980392,0.7) , pfcol=rgb(0.678431, 0.847059, 0.901961,0.7), plwd=4,
            cglcol="grey", cglty=1, axislabcol="grey", caxislabels=seq(0,1,5), cglwd=0.8,vlcex=1.5
            ,title = "RESIT")
 
@@ -69,8 +62,7 @@ colnames(lin_acc_df) = c("SIM", "SIM \n -ln", "SIM \n -G", "AN \n -G", "AN \n -s
 lin_acc_df = rbind(rep(1,10), rep(0,10), lin_acc_df) 
 
 radarchart(lin_acc_df  , axistype=1 , 
-           #custom polygon
-           pcol=rgb(0.529412, 0.807843, 0.980392,0.7) , pfcol=rgb(0.678431, 0.847059, 0.901961,0.7) , plwd=4 ,
+           pcol=rgb(0.529412, 0.807843, 0.980392,0.7) , pfcol=rgb(0.678431, 0.847059, 0.901961,0.7), plwd=4,
            cglcol="grey", cglty=1, axislabcol="grey", caxislabels=seq(0,1,5), cglwd=0.8,vlcex=1.5
            ,title = "LINGAM")
 
@@ -81,20 +73,18 @@ colnames(emd_acc_df) = c("SIM", "SIM \n -ln", "SIM \n -G", "AN \n -G", "AN \n -s
 emd_acc_df = rbind(rep(1,10), rep(0,10), emd_acc_df)
 
 radarchart(emd_acc_df  , axistype=1 , 
-           #custom polygon
-           pcol=rgb(0.529412, 0.807843, 0.980392,0.7) , pfcol=rgb(0.678431, 0.847059, 0.901961,0.7) , plwd=4 ,
+           pcol=rgb(0.529412, 0.807843, 0.980392,0.7) , pfcol=rgb(0.678431, 0.847059, 0.901961,0.7), plwd=4,
            cglcol="grey", cglty=1, axislabcol="grey", caxislabels=seq(0,1,5), cglwd=0.8,vlcex=1.5
            ,title = "EMD")
 
 
 # GR-AN
-gran_acc_df = as.data.frame(matrix(c(0.47,0.41,0.41,0.05,0.06,0.5,0.5, 0.94,0.49, 0.40), ncol = 10))
+gran_acc_df = as.data.frame(matrix(c(0.47,0.41,0.41,0.05,0.06,0.39,0.49, 0.94,0.49, 0.40), ncol = 10))
 colnames(gran_acc_df) = c("SIM", "SIM \n -ln", "SIM \n -G", "AN \n -G", "AN \n -s","HN", "HN \n -s", "MN \n -U", "MN \n -G", "Tueb")
 gran_acc_df = rbind(rep(1,10), rep(0,10), gran_acc_df) 
 
 radarchart(gran_acc_df  , axistype=1 , 
-           #custom polygon
-           pcol=rgb(0.529412, 0.807843, 0.980392,0.7) , pfcol=rgb(0.678431, 0.847059, 0.901961,0.7) , plwd=4 ,
+           pcol=rgb(0.529412, 0.807843, 0.980392,0.7) , pfcol=rgb(0.678431, 0.847059, 0.901961,0.7), plwd=4,
            cglcol="grey", cglty=1, axislabcol="grey", caxislabels=seq(0,1,5), cglwd=0.8,vlcex=1.5
            ,title = "GR-AN")
 dev.off()
