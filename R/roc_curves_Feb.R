@@ -64,7 +64,7 @@ perf_hs <- performance(pred_hs,"tpr","fpr")
 auc_hs <- performance(pred_hs, "auc")@y.values[[1]]
 pr.curve(scores.class0 = CausalCopula_HS$Eps, weights.class0 = pairs_gt_hs$X1, curve = T);
 par(new = TRUE)
-plot(perf_hs, col = "red", lwd = 2, cex.lab = 1.5, cey.lab = 1.5, type="l", lty=4)
+plot(perf_hs, col = "slateblue2", lwd = 2, cex.lab = 1.5, cey.lab = 1.5, type="l", lty=4)
 
 auc_hs_x = unlist(perf_hs@x.values)
 auc_hs_y = unlist(perf_hs@y.values)
@@ -79,7 +79,7 @@ perf_hss <- performance(pred_hss,"tpr","fpr")
 auc_hss <- performance(pred_hss, "auc")@y.values[[1]]
 pr.curve(scores.class0 = CausalCopula_HSs$Eps, weights.class0 = pairs_gt_hs$X1, curve = T);
 par(new = TRUE)
-plot(perf_hs, col = "green", lwd = 2, cex.lab = 1.5, cey.lab = 1.5, type="l", lty=4)
+plot(perf_hs, col = "lightsalmon4", lwd = 2, cex.lab = 1.5, cey.lab = 1.5, type="l", lty=4)
 
 auc_hss_x = unlist(perf_hss@x.values)
 auc_hss_y = unlist(perf_hss@y.values)
@@ -219,7 +219,7 @@ auc_tueb_y = unlist(perf@y.values)
 abline(0,1 , lty = 2)
 
 
-legend("bottomright", c("AN-s","AN-G", "AN-t", "AN-n", "SIM", "SIM-ln", "SIM-G", "MN-U", "MN-G", "Tueb-CE" ,"rand. cls"), col = c("blue", "steelblue", "mediumblue", "slateblue2", "lightsalmon4", "orange", "lightsalmon1", "indianred1", "indianred3","red", "black"),lty = 1,  lwd = 2, cex=1.5)
+legend("bottomright", c("AN-s","AN-G", "AN-t", "AN-n", "SIM", "SIM-ln", "SIM-G", "MN-U", "MN-G", "Tueb-CE" ,"rand. cls"), col = c("blue", "steelblue", "mediumblue", "slateblue2", "lightsalmon4", "orange", "lightsalmon1", "indianred1", "indianred3","red", "black"),lty = 1,  lwd = 2)
 
 dev.off()
 
