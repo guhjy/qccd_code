@@ -23,7 +23,7 @@ qccd_code2018/
 |-----SIM-ln/
 |---tuebingen_benchmark/ (Mooij 2016)
 
-
+Set working directory to setwd("~/qccd_code2018/R")
 The file ~R/cd_utils.R contains a wrapper around our causal discovery method.
 
 EXAMPLES

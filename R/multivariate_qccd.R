@@ -5,7 +5,7 @@ library(CAM)
 library(ggraph)
 library(igraph)
 library(naglr)
-source("cd_utils.R")
+source("./cd_utils.R")
 
 # 1. load dataset
 octet_ds <-
@@ -16,14 +16,13 @@ octet_ds <-
 
 octet_ds = data.frame(octet_ds)
 
-# get adjecency matrix from CAM
+# 2. get  get CPDAG from CAM
 cam_adj <- CAM(octet_ds)
 cam_adj = cam_adj$Adj
-
-# get CPDAG from CAM
 g_cam <- graph_from_adjacency_matrix(cam_adj)
 cam_cpdag = dag2cpdag(igraph.to.graphNEL(g_cam))
 cam_adj = as(cam_cpdag, "matrix")
+
 
 d = ncol(octet_ds)
 dir_mat = matrix(0, nrow = d, ncol = d)
@@ -32,7 +31,7 @@ dir_mat_dag = matrix(0, nrow = d, ncol = d)
 dir_mat_fin = matrix(0, nrow = d, ncol = d)
 
 
-# orent edges in CPDAG with QCCD
+# 3. orent edges in CPDAG with QCCD
 for (i in 1:d) {
   for (j in 1:d) {
     if (i < j && (cam_adj[i, j] == 1 || cam_adj[j, i] == 1)) {
@@ -53,6 +52,7 @@ for (i in 1:d) {
 }
 
 
+# 4. Rank edges by confidence and insert into final Adj matrix
 conf_tmp = conf_mat
 conf_mat[conf_mat < 0.5] = 1 - conf_mat[conf_mat < 0.5]
 conf_mat[conf_mat == 1] = 0
@@ -75,14 +75,17 @@ for (i in 1:sum(cam_adj)) {
 
 g_cam <- graph_from_adjacency_matrix(cam_adj)
 g_cam_qqcd <- graph_from_adjacency_matrix(dir_mat_fin)
-pdf("./results/octet_cam_qccd.pdf", width = 10, height = 6)
 
+# 5. is a Valid DAG
 m1 <- matrix(cam_adj, d, d)
 isValidGraph(m1, type = "dag")
-
+# FALSE because m1 is CPDAG
 
 m2 <- matrix(dir_mat_fin, d, d)
 isValidGraph(m2, type = "dag")
+# TRUE
+
+pdf("./../results/octet_cam_qccd.pdf", width = 10, height = 6)
 
 
 par(mfrow = c(1, 2))
@@ -101,7 +104,7 @@ names <- c(
   "energy"
 )
 
-
+# 6. plotting results 
 par(mfrow = c(1,2))
 l1 <- layout_with_sugiyama(g_cam)
 l2 <- layout_with_sugiyama(g_cam_qqcd)

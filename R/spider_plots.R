@@ -44,7 +44,7 @@ radarchart( slope_acc_df  , axistype=1 ,
             pcol=rgb(0.529412, 0.807843, 0.980392,0.7) , pfcol=rgb(0.678431, 0.847059, 0.901961,0.7), plwd=4,
             cglcol="grey", cglty=1, axislabcol="grey", caxislabels=seq(0,1,5), cglwd=0.8,vlcex=1.5
             ,title = "Slope")
-
+s
 
 resit_acc_df = as.data.frame(matrix(c(0.78,0.87,0.77,1,1, 0.31,0.08, 0.09,0.04,0.53), ncol = 10))
 colnames(resit_acc_df) = c("SIM", "SIM \n -ln", "SIM \n -G", "AN \n -G", "AN \n -s","HN", "HN \n -s", "MN \n -U", "MN \n -G", "Tueb")
