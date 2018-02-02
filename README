@@ -8,20 +8,20 @@ CONTENTS
 qccd_code2018/
 |-R/ (all of our R code lives here)
 |---run_benchmarks/ (scripts for running qccd across different benchmarks)
-|-data/
-|—ANHNMN/ (simulated and real data pairs)
+|-data/ 
+|—ANHNMN/ (simulated)
 |-----AN-Gauss/
 |-----AN-s/
 |-----HN/
 |-----HN-s/
 |-----MN/
 |-----MN-s/
-|---SIM_pairs/ (Mooij 2016)
+|---SIM_pairs/ (Mooij 2016) 
 |-----SIM/
 |-----SIM-G/
 |-----SIM-c/
 |-----SIM-ln/
-|---tuebingen_benchmark/ (Mooij 2016)
+|---tuebingen_benchmark/ (real data Mooij 2016) 
 
 Set working directory to setwd("~/qccd_code2018/R")
 The file ~R/cd_utils.R contains a wrapper around our causal discovery method.
