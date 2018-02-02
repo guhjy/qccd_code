@@ -135,3 +135,41 @@ plot(
   main = "CAM QQCD"
 )
 dev.off()
+
+
+library(ggraph)
+
+set.seed(0)
+gg_cam <- g_cam %>%
+  set_vertex_attr("label", value = names)
+vertex_attr(gg_cam, "label")
+vertex_attr(gg_cam)
+
+names <- 1:11
+V(gg_cam)$name <- names
+# plot using ggraph
+ggraph(gg_cam, layout = "igraph", algorithm = 'kk') +
+  geom_edge_link(arrow = arrow(length = unit(4, 'mm'),type = "closed"), 
+                 end_cap = circle(6, 'mm'), colour = "black") +
+   geom_point(aes(x=x, y=y), colour = "darkgray", size = 15) +
+  geom_node_text(aes(label = name), size = 4) + theme_naglr(grid = FALSE, ticks = FALSE, axis = FALSE,plot_margin = margin(30, 30, 30, 30) ) + labs(x = " ", y = " ")
+
+
+
+set.seed(0)
+g <- g_cam_qqcd %>%
+  set_vertex_attr("label", value = names)
+vertex_attr(g, "label")
+vertex_attr(g)
+#plot(g)
+names <- 1:11
+V(g)$name <- names
+# plot using ggraph
+ggraph(g, layout = 'igraph', algorithm = 'graphopt') + 
+  geom_edge_link(arrow = arrow(length = unit(4, 'mm'),type = "closed"), 
+                 end_cap = circle(6, 'mm'), colour = "black") +
+  geom_point(aes(x=x, y=y), colour = "darkgray", size = 15) +
+  geom_node_text(aes(label = name), size = 4) + theme_naglr(grid = FALSE, ticks = FALSE, axis = FALSE,plot_margin = margin(30, 30, 30, 30) ) + labs(x = " ", y = " ")
+
+
+#dev.off()

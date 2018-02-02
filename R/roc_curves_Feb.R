@@ -22,6 +22,17 @@ pr.curve(scores.class0 = CausalCopula_ANMs$Eps, weights.class0 = pairs_gt_s$X1, 
 plot(perf, col = "blue", lwd = 2, cex.lab = 1.5, cey.lab = 1.5, type="l", lty=2)
 
 
+# ROC
+pROC::roc(pairs_gt_s$X1,CausalCopula_ANMs$Eps)
+ROCR::performance(ROCR::prediction(CausalCopula_ANMs$Eps, pairs_gt_s$X1), "auc")@y.values[[1]]
+PRROC::roc.curve(CausalCopula_ANMs$Eps, weights.class0 = pairs_gt_s$X1)
+
+# PR
+pr <- ROCR::performance(ROCR::prediction(CausalCopula_ANMs$Eps, pairs_gt_s$X1), "prec", "rec")
+integrate(splinefun(pr@x.values[[1]], pr@y.values[[1]]), 0, 1)
+PRROC::pr.curve(CausalCopula_ANMs$Eps, weights.class0 = pairs_gt_s$X1)
+
+
 # i need these for the ggplot graph
 auc_anms_x = unlist(perf@x.values)
 auc_anms_y = unlist(perf@y.values)
@@ -41,6 +52,23 @@ plot(perf_anm, col = "steelblue", lwd = 2, cex.lab = 1.5, cey.lab = 1.5, type="l
 auc_anm_x = unlist(perf_anm@x.values)
 auc_anm_y = unlist(perf_anm@y.values)
 
+
+
+
+# ROC
+pROC::roc(pairs_gt_anm$X1,CausalCopula_ANM$Eps)
+ROCR::performance(ROCR::prediction(CausalCopula_ANM$Eps, pairs_gt_anm$X1), "auc")@y.values[[1]]
+PRROC::roc.curve(CausalCopula_ANM$Eps, weights.class0 = pairs_gt_anm$X1)
+
+# PR
+pr <- ROCR::performance(ROCR::prediction(CausalCopula_ANM$Eps, pairs_gt_anm$X1), "prec", "rec")
+integrate(splinefun(pr@x.values[[1]], pr@y.values[[1]]), 0, 1)
+PRROC::pr.curve(CausalCopula_ANM$Eps, weights.class0 = pairs_gt_anm$X1)
+
+
+
+
+
 CausalCopula_H <- read_delim("./../results/CausalCopula_AN-het-v3_23012018_m7.tab",
                              "\t", escape_double = FALSE, trim_ws = TRUE)
 pairs_gt_h <- read_csv("./../data/ANM_pairs/AN-het-v3/pairs_gt.txt", 
@@ -54,6 +82,23 @@ plot(perf_h, col = "mediumblue", lwd = 2, cex.lab = 1.5, cey.lab = 1.5, type="l"
 
 auc_h_x = unlist(perf_h@x.values)
 auc_h_y = unlist(perf_h@y.values)
+
+
+
+
+# ROC
+pROC::roc(pairs_gt_h$X1,CausalCopula_H$Eps)
+ROCR::performance(ROCR::prediction(CausalCopula_H$Eps, pairs_gt_h$X1), "auc")@y.values[[1]]
+PRROC::roc.curve(CausalCopula_H$Eps, weights.class0 = pairs_gt_h$X1)
+
+# PR
+pr <- ROCR::performance(ROCR::prediction(CausalCopula_H$Eps, pairs_gt_h$X1), "prec", "rec")
+integrate(splinefun(pr@x.values[[1]], pr@y.values[[1]]), 0, 1)
+PRROC::pr.curve(CausalCopula_H$Eps, weights.class0 = pairs_gt_h$X1)
+
+
+
+
 
 CausalCopula_HS <- read_delim("./../results/CausalCopula_ANs-het_23012018_m7.tab",
                               "\t", escape_double = FALSE, trim_ws = TRUE)
@@ -70,19 +115,17 @@ auc_hs_x = unlist(perf_hs@x.values)
 auc_hs_y = unlist(perf_hs@y.values)
 
 
-CausalCopula_HSs <- read_delim("./../results/CausalCopula_ANs-het_23012018_m7.tab",
-                               "\t", escape_double = FALSE, trim_ws = TRUE)
-pairs_gt_hs <- read_csv("./../data/ANM_pairs/ANs-het/pairs_gt.txt", 
-                        col_names = FALSE)
-pred_hss <- prediction(CausalCopula_HSs$Eps, pairs_gt_hs)
-perf_hss <- performance(pred_hss,"tpr","fpr")
-auc_hss <- performance(pred_hss, "auc")@y.values[[1]]
-pr.curve(scores.class0 = CausalCopula_HSs$Eps, weights.class0 = pairs_gt_hs$X1, curve = T);
-par(new = TRUE)
-plot(perf_hs, col = "lightsalmon4", lwd = 2, cex.lab = 1.5, cey.lab = 1.5, type="l", lty=4)
 
-auc_hss_x = unlist(perf_hss@x.values)
-auc_hss_y = unlist(perf_hss@y.values)
+
+# ROC
+pROC::roc(pairs_gt_hs$X1,CausalCopula_HS$Eps)
+ROCR::performance(ROCR::prediction(CausalCopula_HS$Eps, pairs_gt_hs$X1), "auc")@y.values[[1]]
+PRROC::roc.curve(CausalCopula_HS$Eps, weights.class0 = pairs_gt_hs$X1)
+
+# PR
+pr <- ROCR::performance(ROCR::prediction(CausalCopula_HS$Eps, pairs_gt_hs$X1), "prec", "rec")
+integrate(splinefun(pr@x.values[[1]], pr@y.values[[1]]), 0, 1)
+PRROC::pr.curve(CausalCopula_HS$Eps, weights.class0 = pairs_gt_hs$X1)
 
 
 
@@ -110,6 +153,21 @@ plot(perf_sim, col = "lightsalmon4", lwd = 2, cex.lab = 1.5, cey.lab = 1.5, type
 auc_sim_x = unlist(perf_sim@x.values)
 auc_sim_y = unlist(perf_sim@y.values)
 
+
+
+# ROC
+pROC::roc(pairs_gt_sim,CausalCopula_sim$Eps)
+ROCR::performance(ROCR::prediction(CausalCopula_sim$Eps,pairs_gt_sim), "auc")@y.values[[1]]
+PRROC::roc.curve(CausalCopula_sim$Eps, weights.class0 = pairs_gt_sim)
+
+# PR
+pr <- ROCR::performance(ROCR::prediction(CausalCopula_sim$Eps, pairs_gt_sim), "prec", "rec")
+integrate(splinefun(pr@x.values[[1]], pr@y.values[[1]]), 0, 1)
+PRROC::pr.curve(CausalCopula_sim$Eps, weights.class0 = pairs_gt_sim)
+
+
+
+
 CausalCopula_simln <- read_delim("./../results/CausalCopula_SIM-ln_21012018_m3.tab", 
                                  "\t", escape_double = FALSE, trim_ws = TRUE)
 path = "../data/SIM_pairs/"
@@ -133,6 +191,24 @@ plot(perf_simln, col = "orange", lwd = 2, cex.lab = 1.5, cey.lab = 1.5, type = "
 
 auc_simln_x = unlist(perf_simln@x.values)
 auc_simln_y = unlist(perf_simln@y.values)
+
+
+
+
+# ROC
+pROC::roc(pairs_gt_simln,CausalCopula_simln$Eps)
+ROCR::performance(ROCR::prediction(CausalCopula_simln$Eps,pairs_gt_simln), "auc")@y.values[[1]]
+PRROC::roc.curve(CausalCopula_simln$Eps, weights.class0 = pairs_gt_simln)
+
+# PR
+pr <- ROCR::performance(ROCR::prediction(CausalCopula_simln$Eps, pairs_gt_simln), "prec", "rec")
+integrate(splinefun(pr@x.values[[1]], pr@y.values[[1]]), 0, 1)
+PRROC::pr.curve(CausalCopula_simln$Eps, weights.class0 = pairs_gt_simln)
+
+
+
+
+
 
 CausalCopula_simg <- read_delim("./../results/CausalCopula_SIM-G_21012018_m3.tab", 
                                 "\t", escape_double = FALSE, trim_ws = TRUE)
@@ -162,6 +238,20 @@ auc_simg_y = unlist(perf_simg@y.values)
 
 
 
+# ROC
+pROC::roc(pairs_gt_simg,CausalCopula_simg$Eps)
+ROCR::performance(ROCR::prediction(CausalCopula_simg$Eps,pairs_gt_simg), "auc")@y.values[[1]]
+PRROC::roc.curve(CausalCopula_simg$Eps, weights.class0 = pairs_gt_simg)
+
+# PR
+pr <- ROCR::performance(ROCR::prediction(CausalCopula_simg$Eps, pairs_gt_simg), "prec", "rec")
+integrate(splinefun(pr@x.values[[1]], pr@y.values[[1]]), 0, 1)
+PRROC::pr.curve(CausalCopula_simg$Eps, weights.class0 = pairs_gt_simg)
+
+
+
+
+
 
 CausalCopula_ANMs_un <- read_delim("./../results/CausalCopula_ANMs-Unif-multi_-11_27012018.tab",
                                    "\t", escape_double = FALSE, trim_ws = TRUE)
@@ -176,6 +266,20 @@ plot(perf, col = "indianred1", lwd = 2, cex.lab = 1.5, cey.lab = 1.5, type="l", 
 
 auc_unm_x = unlist(perf@x.values)
 auc_unm_y = unlist(perf@y.values)
+
+
+
+
+# ROC
+pROC::roc(pairs_gt_umn$X1,CausalCopula_ANMs_un$Eps)
+ROCR::performance(ROCR::prediction(CausalCopula_ANMs_un$Eps,pairs_gt_umn$X1), "auc")@y.values[[1]]
+PRROC::roc.curve(CausalCopula_ANMs_un$Eps, weights.class0 = pairs_gt_umn$X1)
+
+# PR
+pr <- ROCR::performance(ROCR::prediction(CausalCopula_ANMs_un$Eps, pairs_gt_umn$X1), "prec", "rec")
+integrate(splinefun(pr@x.values[[1]], pr@y.values[[1]]), 0, 1)
+PRROC::pr.curve(CausalCopula_ANMs_un$Eps, weights.class0 = pairs_gt_umn$X1)
+
 
 
 
@@ -196,6 +300,21 @@ auc_gnm_x = unlist(perf@x.values)
 auc_gnm_y = unlist(perf@y.values)
 
 
+
+
+# ROC
+pROC::roc(pairs_gt_gmn$X1,CausalCopula_ANMs_gmn$Eps)
+ROCR::performance(ROCR::prediction(CausalCopula_ANMs_gmn$Eps,pairs_gt_gmn$X1), "auc")@y.values[[1]]
+PRROC::roc.curve(CausalCopula_ANMs_gmn$Eps, weights.class0 = pairs_gt_gmn$X1)
+
+# PR
+pr <- ROCR::performance(ROCR::prediction(CausalCopula_ANMs_gmn$Eps, pairs_gt_gmn$X1), "prec", "rec")
+integrate(splinefun(pr@x.values[[1]], pr@y.values[[1]]), 0, 1)
+PRROC::pr.curve(CausalCopula_ANMs_gmn$Eps, weights.class0 = pairs_gt_gmn$X1)
+
+
+
+
 ref.uv$V6_01[ref.uv$V6=="->"]=1
 ref.uv$V6_01[ref.uv$V6=="<-"]=0
 tuebcop <- read.table("../results/copulaQuant_relm=3_21012018.tab", as.is = TRUE, header = TRUE, sep = "\t")
@@ -214,6 +333,24 @@ roc.curve(scores.class0 = tuebcop$Eps, weights.class0 = ref.uv$V6_01, curve = T)
 
 auc_tueb_x = unlist(perf@x.values)
 auc_tueb_y = unlist(perf@y.values)
+
+
+
+
+
+# ROC
+pROC::roc(ref.uv$V6_01,tuebcop$Eps)
+ROCR::performance(ROCR::prediction(tuebcop$Eps,ref.uv$V6_01), "auc")@y.values[[1]]
+PRROC::roc.curve(tuebcop$Eps, weights.class0 = ref.uv$V6_01)
+
+# PR
+pr <- ROCR::performance(ROCR::prediction(tuebcop$Eps, ref.uv$V6_01), "prec", "rec")
+integrate(splinefun(pr@x.values[[1]], pr@y.values[[1]]), 0, 1)
+PRROC::pr.curve(tuebcop$Eps, weights.class0 = ref.uv$V6_01)
+
+
+
+
 
 # random classifier line
 abline(0,1 , lty = 2)
